@@ -1,0 +1,53 @@
+<aside class="sidebar">
+    <div class="logo">Altimetrik</div>
+    <nav>
+        <ul class="side-bar-item-container">
+            <div class="top-menu">
+                <li
+                    [routerLink]="'dashboard'"
+                    routerLinkActive="active"
+                    class="side-bar-item"
+                >
+                    <i class="fas fa-chart-pie"></i> Dashboard
+                </li>
+
+                <li
+                    [routerLink]="'asset/list'"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    class="side-bar-item"
+                >
+                    <i class="fas fa-th-list"></i> Assets
+                </li>
+
+                <li
+                    [routerLink]="'asset/create'"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    class="side-bar-item"
+                >
+                    <i class="fas fa-cart-plus"></i> Add Asset
+                </li>
+
+                <li class="side-bar-item non-clickable">
+                    <i class="fas fa-warning"></i> Alerts
+                </li>
+            </div>
+            <div class="bottom-menu">
+                <!-- we can use this for clear the locastorage data -->
+                <li class="side-bar-item non-clickable">
+                    <i class="fas fa-sign-out"></i> Sign-out
+                </li>
+            </div>
+        </ul>
+        <!-- <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Alerts</a></li>
+            <li><a href="#">Assets</a></li>
+            <li><a href="#">Reports</a></li>
+            <li><a href="#">Tools</a></li>
+            <li><a href="#">Setup</a></li>
+            <li><a href="#">Help / Support</a></li>
+        </ul> -->
+    </nav>
+</aside>

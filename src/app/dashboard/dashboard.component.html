@@ -1,0 +1,72 @@
+<section class="dashboard">
+    <div class="stats">
+        <div class="stat-item">
+            <div class="stat-value">{{ companiesList.length }}</div>
+            <div class="stat-label">Number of Assets</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">${{ currentMarketValue }}</div>
+            <div class="stat-label">Current Value</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">${{ totalInvestedValue }}</div>
+            <div class="stat-label">Invested value</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">{{ percentageChange }}</div>
+            <div class="stat-label">Percentage change</div>
+        </div>
+    </div>
+    <div class="charts">
+        <div class="chart-item">
+            <div class="chart-title">
+                Asset Value: ${{ currentMarketValue }}
+            </div>
+            <div class="chart-content">
+                <div>
+                    <canvas
+                        baseChart
+                        [data]="currentMarketValueList"
+                        [labels]="companiesList"
+                        [chartType]="pieChartType"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"
+                    ></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="chart-item">
+            <div class="chart-title">Stock Value Comparision</div>
+            <div class="chart-content">
+                <div>
+                    <div style="display: block">
+                        <canvas
+                            baseChart
+                            [datasets]="barChartData"
+                            [labels]="companiesList"
+                            [options]="barChartOptions"
+                            [legend]="barChartLegend"
+                            [chartType]="barChartType"
+                            (chartHover)="chartHovered($event)"
+                            (chartClick)="chartClicked($event)"
+                        ></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="feeds-alerts">
+        <div class="feeds">
+            <div class="feeds-title">Feeds</div>
+            <div class="feed-item">Live Feed data goes heree!</div>
+        </div>
+        <div class="alerts">
+            <div class="alerts-title">Alerts</div>
+            <ng-container *ngFor="let name of alertList">
+                <div class="alert-item">
+                    <b>{{ name }}</b> is at risk
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</section>

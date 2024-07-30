@@ -1,0 +1,63 @@
+<form
+    [formGroup]="investmentForm"
+    (ngSubmit)="onSubmit(formDirective)"
+    #formDirective="ngForm"
+>
+    <mat-form-field appearance="outline">
+        <mat-label>Choose Asset</mat-label>
+        <mat-select formControlName="name" required>
+            <mat-option *ngFor="let asset of assetList" [value]="asset">
+                {{ asset }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Asset Type</mat-label>
+        <mat-select
+            formControlName="type"
+            matTooltip="As of Now, only stocks are supported"
+            matTooltipPosition="left"
+            required
+        >
+            <mat-option
+                *ngFor="let asset of assetTypes"
+                [value]="asset"
+                [disabled]="asset !== 'Stock'"
+            >
+                {{ asset }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Quantity</mat-label>
+        <input matInput formControlName="quantity" type="number" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Purchase Price</mat-label>
+        <input matInput formControlName="price" type="number" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Purchase Date</mat-label>
+        <input
+            matInput
+            formControlName="date"
+            [matDatepicker]="picker"
+            required
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <button
+        mat-raised-button
+        color="primary"
+        [disabled]="investmentForm.invalid"
+        type="submit"
+    >
+        Submit
+    </button>
+</form>
